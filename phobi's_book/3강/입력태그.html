@@ -66,5 +66,45 @@
     <br><hr><br>
 
     <h2>메뉴를 표시하고 사용자로 하여금 하나를 선택하게 하는 select 태그</h2>
+    <form action="">
+        <select name="cars">
+            <option value="bmw">BMW</option>
+            <option value="benz">BENZ</option>
+            <option value="hyundai" selected>현대자동차</option>
+            <option value="kia">기아자동차</option>
+        </select>
+    </form>
+
+    <br><hr><br>
+    <h2>선택 항목들을 지정할 수 있는 datalist 요소</h2>
+    <p>선호하는 브라우저를 선택해주세요.</p>
+    <form action="process.jsp">
+        <input list="browsers" name="browsers">
+        <datalist id="browsers">
+            <option value="구글 크롬">구글 크롬</option>
+            <option value="엣지">엣지</option>
+            <option value="오페라">오페라</option>
+            <option value="사파리">사파리</option>
+            <option value="파이어폭스">파이어폭스</option>
+        </datalist>
+        <input type="submit">
+    </form>
+
+    <br><hr><br>
+    <h2>입력 요소들을 그룹핑하는 데 사용되는 태그 : fieldset</h2>
+    <form>
+        <fieldset>
+            <legend>인적사항입력</legend>
+            이름: <input type="text"><br>
+            전화번호: <input type="text"><br>
+            주소: <input type="text">
+        </fieldset>
+    </form>
+
+    <br><hr><br>
+    <h2>파일 업로드 : input 태그의 accept 속성</h2>
+    <form enctype="multipart/form-data">
+        <input type="file" accept="images/jpg,images/gif">
+    </form>
 </body>
 </html>
