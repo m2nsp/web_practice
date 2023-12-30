@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <form action="input.jsp" method="post">
+        이메일: <input type="email" name="email"><br>
+        URL: <input type="url" name="url"><br>
+        전화번호: <input type="tel" name="tel"><br>
+        색상: <input type="color" name="color"><br>
+        월: <input type="month" name="month"><br>
+        날짜: <input type="date" name="date"><br>
+        주: <input type="month" name="week"><br>
+        시간: <input type="time" name="time"><br>
+        지역 시간: <input type="datetime-local" name="localdatetime"><br>
+        숫자: <input type="number" name="number" min="1" max="10" step="2"><br>
+        범위: <input type="range" name="range" min="1" max="10" step="2"><br>
+        <input type="submit" value="제출">
+    </form>
+
+    <br><hr><br>
+
+    <h2>고객의 소리</h2>
+
+    아이디: <input type="text" name="name"><br>
+    구매번호: <input type="text" name="number" size="10"><br>
+    패스워드: <input type="password" name="pass">
+    <form name="input" action="getfeedback.jsp" method="get">
+        제품을 평가해주세요.<br>
+        <textarea name="feedback" rows="5" cols="50"></textarea>
+    </form>
+
+    <br><hr><br>
+
+    <h2>선호도 조사입니다</h2>
+    <form>
+        성별: 
+        <input type="radio" name="gender" value="male">남성 
+        <input type="radio" name="gender" value="female">여성 <br>
+        과일 선택: 
+        <input type="checkbox" name="fruits" value="apple" checked>사과
+        <input type="checkbox" name="fruits" value="grape">포도
+        <input type="checkbox" name="fruits" value="orange">오렌지
+    </form>
+
+    <br><hr><br>
+
+    <h2>제출버튼과 초기화 버튼</h2>
+    <form name="input" action="login.jsp" method="get">
+        아이디: <input type="text" name="user"><br>
+        패스워드: <input type="password" name="pass"><br>
+        <input type="submit" value="제출"> 
+        <input type="reset" value="초기화">
+    </form>
+
+    <br><hr><br>
+
+    <h2>버튼</h2>
+    <button type="button"><img src="../images/dog.png"></button>
+    <button type="button"><img src="../images/cat.png"></button>
+    <button type="button"><img src="../images/bird.png"></button>
+
+    <br><hr><br>
+
+    <h2>메뉴를 표시하고 사용자로 하여금 하나를 선택하게 하는 select 태그</h2>
+</body>
+</html>
