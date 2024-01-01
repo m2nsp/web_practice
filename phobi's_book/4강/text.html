@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>텍스트 정렬</title>
+    <style>
+        h1{text-align: center; color: red;}         /*중앙정렬*/
+        p.date{text-align: right; color:indigo;}    /*오른쪽정렬*/
+        p.poet{text-align: justify; color:blue;}    /*양쪽정렬*/
+
+        h2{text-decoration: overline;}
+        h3{text-decoration: line-through;}
+        h4{text-decoration: underline;}
+
+        p.upper{text-transform: uppercase;}
+        p.lower{text-transform: lowercase;}
+        p.capit{text-transform: capitalize;}
+
+        .shadow{text-shadow: 5px 5px 5px #FF0000;}      /* x방향-이동거리 y방향-이동거리 흐림정도 텍스트그림자색상 */
+    
+        .test{width: 11em; border: 1px solid #000000; word-wrap: break-word;}
+    </style>
+</head>
+<body>
+    <h1>CSS 텍스트 정렬 예제</h1>
+    <p class="date">2022년 3월 1일</p>
+    <p class="poet">
+        삶이 그대를 속일지라도 슬퍼하거나 노여워하지 말라 우울한 날을 견디면 믿으라, 기쁨의 날이 오리니
+        마음은 미래에 사는 것, 현재는 슬픈 것, 모든 것은 순간적인 것, 지나가는 것이니 그리고 지나가는 것은 훗날 소중하게 되리니
+    </p>
+    <p><em>참고 푸시킨의 시</em></p>
+
+    <br><hr><br>
+
+    <h2>텍스트 장식의 예입니다.</h2>
+    <h3>텍스트 장식의 예입니다.</h3>
+    <h4>텍스트 장식의 예입니다.</h4>
+
+    <br><hr><br>
+
+    <p class="upper">text_transform is uppercase.</p>
+    <p class="lower">text_transform is lowercase.</p>
+    <p class="capit">text_transform is capitalize.</p>
+
+    <br><hr><br>
+
+    <h1 class="shadow">Text-shadow 처리!</h1>
+
+    <br><hr><br>
+
+    <p class="test">
+        매우 긴 단어가 있는 경우에 자동으로 잘라준다.
+        aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+    </p>
+</body>
+</html>
