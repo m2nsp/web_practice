@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            background-color: bisque;
+        }
+        ul{
+            list-style: none;
+            text-align: center;
+            border-top: 1px solid red;
+            border-bottom: 1px solid red;
+            padding: 10px 0;
+        }
+        ul li{
+            display: inline;
+            text-transform: uppercase;
+            padding: 0 10px;
+            letter-spacing: 10px;
+        }
+        ul li a{
+            text-decoration: none;
+            color:  black;
+        }
+        ul li a:hover{
+            text-decoration: underline;
+        }
+        #left{
+            display: table;
+        }
+    </style>
+</head>
+<body>
+    <ul>
+        <li><a href="#">Home</a></li>
+        <li><a href="#">Blog</a></li>
+        <li><a href="#">About</a></li>
+        <li><a href="#">Contact</a></li>
+    </ul>
+
+    <aside id="left">
+        <h4>카테고리</h4>
+        <ul>
+            <li><a target="iframe1" href="computer.html">컴퓨터</a></li>
+            <li><a target="iframe1" href="clothing.html">의류</a></li>
+            <li><a target="iframe1" href="music.html">음악</a></li>
+            <li><a target="iframe1" href="movie.html">영화</a></li>
+            <li><a target="iframe1" href="computer.html">스포츠/레저</a></li>
+            <li><a target="iframe1" href="computer.html">가구/인테리어</a></li>
+            <li><a target="iframe1" href="computer.html">식품</a></li>
+        </ul>
+    </aside>
+</body>
+</html>
