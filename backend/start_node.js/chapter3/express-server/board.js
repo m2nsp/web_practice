@@ -17,7 +17,14 @@ app.post("/posts", (req, res) => {              // /posts로 요청이 오면 �
     const{title, name, text} = req.body;        // HTTP 요청의 body 데이터를 변수에 할당
 
     //게시글 리스트에 새로운 게시글 정보 추가
-    posts.push({id: posts.length+1, title, name, text, createdDt: Date()});
+    posts.push({id: posts.length+1,
+                title,
+                name,
+                text,
+                createdDt: Date(),
+                likes: 0,                      // 좋아요 수 초기화
+                comments: []                   // 댓글 리스트 초기화
+       });
     res.json({title, name, text});
 });
 
@@ -29,7 +36,13 @@ app.put("/posts/:id", (req, res) => {
     // 게시글 리스트에서 해당 ID의 게시글을 찾아 수정
     const postIndex = posts.findIndex((post) => post.id === id);
     if (postIndex !== -1) {
-      posts[postIndex] = { ...posts[postIndex], title, name, text, updatedDt: Date() };
+      posts[postIndex] = { 
+        ...posts[postIndex],
+        title,
+        name,
+        text,
+        updatedDt: Date()
+      };
       res.json(posts[postIndex]);
     } else {
       res.status(404).json({ error: "Post not found" });
@@ -48,11 +61,66 @@ app.delete("/posts/:id", (req, res) => {
     res.json("NOT CHANGED");
 });
 
-app.listen(3000, () => {
-    console.log("간단 게시판 만들기");
+
+// /posts/:id/like로 PUT 요청이 오면 실행 - 좋아요 기능
+app.put("/posts/:id/like", (req, res) => {
+  const id = +req.params.id;
+  const post = posts.find((post) => post.id === id);
+  if (post) {
+    post.likes += 1; // 좋아요 수 증가
+    res.json(post);
+  } else {
+    res.status(404).json({ error: "Post not found" });
+  }
+});
+
+// /posts/:id/comments로 POST 요청이 오면 실행 - 댓글 추가
+app.post("/posts/:id/comments", (req, res) => {
+  const id = +req.params.id;
+  const post = posts.find((post) => post.id === id);
+  if (post) {
+    const { name, text } = req.body;
+    const comment = { id: post.comments.length + 1, name, text, createdDt: Date() };
+    post.comments.push(comment); // 댓글 리스트에 추가
+    res.json(comment);
+  } else {
+    res.status(404).json({ error: "Post not found" });
+  }
+});
+
+// /posts/:id/comments로 GET 요청이 오면 실행 - 댓글 조회
+app.get("/posts/:id/comments", (req, res) => {
+  const id = +req.params.id;
+  const post = posts.find((post) => post.id === id);
+  if (post) {
+    res.json(post.comments);
+  } else {
+    res.status(404).json({ error: "Post not found" });
+  }
+});
+
+// /posts/:postId/comments/:commentId로 DELETE 요청이 오면 실행 - 댓글 삭제
+app.delete("/posts/:postId/comments/:commentId", (req, res) => {
+  const postId = +req.params.postId;
+  const commentId = +req.params.commentId;
+  const post = posts.find((post) => post.id === postId);
+  if (post) {
+    const originalLength = post.comments.length;
+    post.comments = post.comments.filter((comment) => comment.id !== commentId);
+    if (post.comments.length < originalLength) {
+      res.json("Comment deleted");
+    } else {
+      res.status(404).json({ error: "Comment not found" });
+    }
+  } else {
+    res.status(404).json({ error: "Post not found" });
+  }
 });
 
 
+app.listen(3000, () => {
+    console.log("간단 게시판 만들기");
+});
 
 
 app.use((req, res, next) => {
