@@ -83,4 +83,24 @@ userController.post('/session-login', passport.authenticate('local', async(req, 
     return res.json(user);
 }))
 
+
+//Passport를 이용한 구글로그인 구현
+userController.get('/auth/google', passport.authenticate('google', {scope: ['profile', 'email']}));
+
+
+//구글로그인 -- callbackURL로 설정한 라우트에서 토큰을 발행해주는 로직
+userController.get('/auth/google/callback', passport.authenticate('google'), (req, res, next) => {
+    const { id } = req.user;
+    const accessToken = userService.createToken(id);
+    const refreshToken = userService.refreshToken(id, 'refresh');
+    res.cookie('refreshToken', refreshToken, {
+        httpOnly: true,
+        sameSite: 'none',
+        secure: true,
+    });
+    return res.json({ accessToken });
+})
+
+
+
 export default userController;

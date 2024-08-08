@@ -86,6 +86,13 @@ async function getUserById(id){
 }
 
 
+//Gooogle로 부터 발급받은 정보들로 유저를 등록
+async function oauthCreateOrUpdate(provider, providerId, email, name){
+  const user = await userRepository.createOrUpdate(provider, providerId, email, name);
+  return filterSensitiveUserData(user);
+};
+
+
 export default {
   createUser,
   getUser,
