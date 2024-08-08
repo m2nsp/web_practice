@@ -1,0 +1,11 @@
+//리뷰 생성
+POST http://localhost:3000/reviews
+Content-Type: application/json
+
+{
+    "title": "Great Product",
+    "description": "Very good!",
+    "rating": 5,
+    "productId": 1,
+    "authorId": 1
+}
